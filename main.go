@@ -15,7 +15,8 @@ func main() {
 		panic(err)
 	}
 
-	s := "gsettings set org.gnome.desktop.background picture-uri file://"
+	// s := "gsettings set org.gnome.desktop.background picture-uri file://"
+	s := GetCommand()
 	args := strings.Split(s, " ")
 	args[len(args)-1] += filePath
 	cmd := exec.Command(args[0], args[1:]...)
@@ -24,5 +25,5 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-
+	Update()
 }
