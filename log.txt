@@ -1,0 +1,8 @@
+File written successfully.
+Just downloaded a file /System/Resources/Golang/thumb-1920-842750.jpg with size 584279
+Setting desktop to /System/Resources/Golang/thumb-1920-842750.jpgError reading file open imgs.txt: no such file or directory
+File written successfully.
+Just downloaded a file /System/Resources/Golang/hd-nature-wallpapers-landscapes-background-images-4k-natural-Full-HD-1080p-smart-phone-windows-10-desktop-images-1920x1280-768x512.jpg with size 202339
+Setting desktop to /System/Resources/Golang/hd-nature-wallpapers-landscapes-background-images-4k-natural-Full-HD-1080p-smart-phone-windows-10-desktop-images-1920x1280-768x512.jpgError reading file open imgs.txt: no such file or directory
+Error reading file open imgs.txt: no such file or directory
+Error reading file open imgs.txt: no such file or directory

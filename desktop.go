@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"io"
+	"log"
 	"net/http"
 	"net/url"
 	"os"
@@ -60,7 +60,7 @@ func putFile(file *os.File, client *http.Client, url string) error {
 		return err
 	}
 	defer file.Close()
-	fmt.Printf("Just downloaded a file %s with size %v\n", file.Name(), size)
+	log.Printf("Just downloaded a file %s with size %v\n", file.Name(), size)
 
 	return nil
 

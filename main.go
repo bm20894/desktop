@@ -2,8 +2,8 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"io/ioutil"
+	"log"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -21,7 +21,7 @@ func main() {
 		file := filepath.Join(loc, "imgs.txt")
 		data, err := ioutil.ReadFile(file)
 		if err != nil {
-			fmt.Println("Error reading file", err)
+			panic(err)
 		}
 		contents := strings.Split(string(data), "\n")
 		urls := contents[:len(contents)-1]
@@ -37,7 +37,7 @@ func main() {
 		if _, err = f.WriteString(lines); err != nil {
 			panic(err)
 		}
-		fmt.Println("File written successfully.")
+		log.Println("File written successfully.")
 	}
 
 	filePath, err := GetImg(*url_name, loc)
@@ -48,7 +48,7 @@ func main() {
 	args := strings.Split(s, " ")
 	args[len(args)-1] += filePath
 	cmd := exec.Command(args[0], args[1:]...)
-	fmt.Printf("Setting desktop to %s", filePath)
+	log.Printf("Setting desktop to %s", filePath)
 	err = cmd.Run()
 	if err != nil {
 		panic(err)
