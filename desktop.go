@@ -10,11 +10,11 @@ import (
 	"strings"
 )
 
-func GetImg(url_name string) (string, error) {
+func GetImg(url_name, fileloc string) (string, error) {
 	var fileName string
 
 	buildFileName(url_name, &fileName)
-	file := createFile(&fileName)
+	file := createFile(&fileName, fileloc)
 
 	err := putFile(file, httpClient(), url_name)
 	return fileName, err
@@ -30,8 +30,8 @@ func buildFileName(url_name string, fileName *string) {
 	*fileName = segments[len(segments)-1]
 }
 
-func createFile(fileName *string) *os.File {
-	*fileName = filepath.Join("/System/Resources/Golang", *fileName)
+func createFile(fileName *string, fileloc string) *os.File {
+	*fileName = filepath.Join(fileloc, *fileName)
 	file, err := os.Create(*fileName)
 	if err != nil {
 		panic(err)

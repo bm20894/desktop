@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"os"
 	"os/exec"
+	"path/filepath"
 	"strings"
 )
 
@@ -14,9 +15,11 @@ func main() {
 	url_name := flag.String("img", "", "URL of image to download")
 	flag.Parse()
 
+	var loc string
 	if *url_name == "" {
-		// get random url from file
-		data, err := ioutil.ReadFile("imgs.txt")
+		loc = "/System/Resources/Golang"
+		file := filepath.Join(loc, "imgs.txt")
+		data, err := ioutil.ReadFile(file)
 		if err != nil {
 			fmt.Println("Error reading file", err)
 		}
@@ -25,7 +28,7 @@ func main() {
 
 		// get the first url and move to bottom of file
 		*url_name = urls[0]
-		f, err := os.OpenFile("imgs.txt", os.O_WRONLY, 0600)
+		f, err := os.OpenFile(file, os.O_WRONLY, 0600)
 		if err != nil {
 			panic(err)
 		}
@@ -37,7 +40,7 @@ func main() {
 		fmt.Println("File written successfully.")
 	}
 
-	filePath, err := GetImg(*url_name)
+	filePath, err := GetImg(*url_name, loc)
 	if err != nil {
 		panic(err)
 	}
